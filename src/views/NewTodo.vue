@@ -7,7 +7,8 @@
             <input type="text" v-model="newTodo">
         </section>
         <footer>
-            <a href="#" class="btn">Add new Todo</a>
+            <p>{{ newTodo.length }} / 30 tecken</p>
+            <a href="#" class="btn" @click="addTodo">Add new Todo</a>
         </footer>
     </main>
 </template>
@@ -18,6 +19,22 @@ export default {
     data(){
         return {
             newTodo: ''
+        }
+    },
+    methods: {
+        addTodo(){
+
+            let todo = {
+                done: false,
+                text: this.newTodo
+            }
+
+            this.$store.commit('newTodo', todo);
+
+            this.newTodo = '';
+
+            this.$store.commit('swipe', 0);
+
         }
     }
 }
@@ -35,7 +52,7 @@ export default {
             input {
                 font-size: 1.4rem;
                 font-weight: 700;
-                border: none;
+                border: 1px solid #222;
                 appearance: none;
                 background: none;
                 text-align: center;

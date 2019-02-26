@@ -19,11 +19,22 @@ body {
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
         height: inherit;
+        overflow: hidden;
 
         .slider {
             width: 200vw;
             display: flex;
             height: inherit;
+            overflow: hidden;
+            transition: transform .4s ease;
+
+            &.slide-0 {
+                transform: translate3d(0,0,0);
+            }
+
+            &.slide-1 {
+                transform: translate3d(-100vw, 0, 0);
+            }
           
             main {
                 flex: 1;

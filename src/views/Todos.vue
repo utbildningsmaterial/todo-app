@@ -5,10 +5,10 @@
             <p>När det har svårt att fastna...</p>
         </header>
         <section class="content">
-            <todo />
+            <todo v-for="(todoData, index) in todos" :key="index" :index="index" :todo="todoData" />
         </section>
         <footer>
-            <a href="#" class="btn">Slide to add new</a>
+            <a href="#" class="btn" v-touch:swipe.left="swipe">Slide to add new</a>
         </footer>
     </main>
 </template>
@@ -19,6 +19,16 @@ import todo from '@/components/Todo';
 
 export default {
     name: 'todos',
+    computed: {
+        todos(){
+            return this.$store.state.todos;
+        }
+    },
+    methods: {
+        swipe(e){
+            this.$store.commit('swipe', 1);
+        }
+    },
     components: {
         todo
     }

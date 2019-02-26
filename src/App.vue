@@ -1,7 +1,7 @@
 <template>
   <div id="app">
-    <section class="slider">
-      <todos />
+    <section class="slider" :class="'slide-' + activeSlide">
+      <todos/>
       <newtodo />
     </section>
   </div>
@@ -13,6 +13,11 @@ import newtodo from './views/NewTodo.vue'
 
 export default {
   name: 'app',
+  computed: {
+    activeSlide(){
+      return this.$store.state.activeSlide;
+    }
+  },
   components: {
     todos,
     newtodo
