@@ -25,7 +25,7 @@ export default {
         }
     },
     methods: {
-        swipe(e){
+        swipe(){
             this.$store.commit('swipe', 1);
         }
     },

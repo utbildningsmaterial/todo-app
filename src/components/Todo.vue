@@ -1,6 +1,6 @@
 <template>
-    <article class="todo" :class="{ completed : todo.done }" v-touch:swipe.right="completed">
-        <aside class="done" v-if="todo.done">
+    <article class="todo" :class="{ completed : todo.done }" v-touch:swipe="completed">
+        <aside class="done">
             <img src="../assets/check.svg" alt="done">
         </aside>
         <section class="text">
@@ -37,6 +37,11 @@ export default {
         .text {
             color: rgba($color: #000000, $alpha: .4);
             text-decoration: line-through;
+            transform: translate3d(0,0,0);
+        }
+
+        .done {
+            transform: scale(1);
         }
     }
 
@@ -48,6 +53,8 @@ export default {
         justify-content: center;
         align-items: center;
         border-radius: 999rem;
+        transform: scale(0);
+        transition: transform .1s ease;
     }
 
     .text {
@@ -55,6 +62,8 @@ export default {
         display: flex;
         align-items: center;
         padding: 0 0 0 1rem;
+        transform: translate3d(-3rem,0,0);
+        transition: transform .1s ease;
     }
 }
 

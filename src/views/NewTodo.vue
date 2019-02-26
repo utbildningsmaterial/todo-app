@@ -5,9 +5,10 @@
         </header>
         <section class="content">
             <input type="text" v-model="newTodo">
+            <p>{{ newTodo.length }} / 30 tecken</p>
         </section>
         <footer>
-            <p>{{ newTodo.length }} / 30 tecken</p>
+            
             <a href="#" class="btn" @click="addTodo">Add new Todo</a>
         </footer>
     </main>
@@ -43,9 +44,14 @@ export default {
 <style lang="scss">
 
     #new-todo {
+        
+        header {
+            flex: 1 !important;
+        }
 
         .content {
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
 
@@ -56,11 +62,19 @@ export default {
                 appearance: none;
                 background: none;
                 text-align: center;
-                padding: .25rem;
+                padding: .5rem;
+                border-radius: 99rem;
 
                 &:focus {
                     outline: none;
                 }
+            }
+
+            p {
+                text-align: center;
+                margin: 1rem 0;
+                font-size: 1rem;
+                color: rgba($color: #000000, $alpha: .6);
             }
 
         }
